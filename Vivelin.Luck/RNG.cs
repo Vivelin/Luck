@@ -6,7 +6,7 @@ namespace Vivelin.Luck
     /// <summary>
     /// Provides a static, thread-safe way to generate pseudo-random numbers.
     /// </summary>
-    public static class RNG
+    public static class Rng
     {
         private static readonly ThreadLocal<Random> localRandom = new ThreadLocal<Random>(Create);
         private static readonly Random seedGenerator = new Random();
