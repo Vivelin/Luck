@@ -10,6 +10,7 @@
 
 namespace Vivelin.Luck {
     using System;
+    using System.Reflection;
     
     
     /// <summary>
@@ -39,7 +40,7 @@ namespace Vivelin.Luck {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Vivelin.Luck.Exceptions", typeof(Exceptions).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Vivelin.Luck.Exceptions", typeof(Exceptions).GetTypeInfo().Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
