@@ -17,7 +17,7 @@ namespace Vivelin.Luck
         /// <returns>A random element from <paramref name="source"/>.</returns>
         public static T Sample<T>(this IEnumerable<T> source) where T : IWeighted
         {
-            return Sample(source, RNG.Current);
+            return Sample(source, Rng.Current);
         }
 
         /// <summary>
