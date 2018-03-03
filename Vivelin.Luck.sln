@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vivelin.Luck", "Vivelin.Luck\Vivelin.Luck.csproj", "{E810C215-8E35-49B3-BE1B-177B72D037C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vivelin.Luck", "Vivelin.Luck\Vivelin.Luck.csproj", "{E810C215-8E35-49B3-BE1B-177B72D037C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +20,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+		RESX_ConfirmAddLanguageFile = False
+		RESX_SortFileContentOnSave = True
 		SolutionGuid = {53543420-C28B-4074-80F0-E078FE51C8E8}
 	EndGlobalSection
 EndGlobal

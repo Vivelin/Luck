@@ -5,7 +5,6 @@ namespace Vivelin.Luck
     /// <summary>
     /// Represents the error that occurs when unreachable code is reached.
     /// </summary>
-    [Serializable]
     public class UnreachableException : Exception
     {
         /// <summary>
@@ -34,28 +33,5 @@ namespace Vivelin.Luck
         /// reference (Nothing in Visual Basic) if no inner exception is specified.
         /// </param>
         public UnreachableException(string message, Exception innerException) : base(message, innerException) { }
-
-        /// <summary>
-        /// Initializes a new instance of the <see
-        /// cref="UnreachableException"></see> class with serialized data.
-        /// </summary>
-        /// <param name="info">
-        /// The <see cref="System.Runtime.Serialization.SerializationInfo"></see>
-        /// that holds the serialized object data about the exception being thrown.
-        /// </param>
-        /// <param name="context">
-        /// The <see cref="System.Runtime.Serialization.StreamingContext"></see>
-        /// that contains contextual information about the source or destination.
-        /// </param>
-        /// <exception cref="ArgumentNullException">
-        /// The <paramref name="info">info</paramref> parameter is null.
-        /// </exception>
-        /// <exception cref="System.Runtime.Serialization.SerializationException">
-        /// The class name is null or <see
-        /// cref="P:System.Exception.HResult"></see> is zero (0).
-        /// </exception>
-        protected UnreachableException(
-          System.Runtime.Serialization.SerializationInfo info,
-          System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
     }
 }
