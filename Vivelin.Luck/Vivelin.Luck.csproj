@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.0</TargetFramework>
+    <TargetFrameworks>netstandard1.0;net461</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Vivelin</Authors>
     <Company>Vivelin</Company>
@@ -11,6 +11,8 @@
     <PackageTags>random rng</PackageTags>
     <NeutralLanguage></NeutralLanguage>
     <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <Version>1.0.1</Version>
+    <PackageReleaseNotes>Added .NET Framework 4.6.1 as additional target as a workaround for NuGet issues</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
