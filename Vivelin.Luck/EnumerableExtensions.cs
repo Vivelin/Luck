@@ -40,13 +40,13 @@ namespace Vivelin.Luck
             if (random == null)
                 throw new ArgumentNullException(nameof(random));
 
-            var totalWeight = source.Sum(x => x.Weight);
+            var totalWeight = source.Sum(x => x?.Weight ?? 0);
             var targetWeight = random.Next(totalWeight);
 
             var runningTotal = 0d;
             foreach (var element in source)
             {
-                runningTotal += element.Weight;
+                runningTotal += element?.Weight ?? 0;
                 if (runningTotal > targetWeight)
                     return element;
             }

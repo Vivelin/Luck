@@ -36,6 +36,22 @@ namespace Vivelin.Luck.Tests
             Assert.IsTrue(IsSorted(results.Values), string.Join(", ", results.Values));
         }
 
+        [TestMethod]
+        public void SampleSkipsOverNullReferences()
+        {
+            const int expectedWeight = 100;
+            var collection = new[]
+            {
+                new WeightedObject(0),
+                null,
+                new WeightedObject(expectedWeight)
+            };
+
+            var random = new Random(0);
+            var value = collection.Sample(random);
+            Assert.AreEqual(expectedWeight, value.Weight);
+        }
+
         private static bool IsSorted<T>(IEnumerable<T> enumerable) where T : IComparable<T>
         {
             var prev = default(T);
@@ -63,6 +79,16 @@ namespace Vivelin.Luck.Tests
             }
 
             public double Weight => weight;
+        }
+
+        private class WeightedObject : IWeighted
+        {
+            public WeightedObject(double weight)
+            {
+                Weight = weight;
+            }
+
+            public double Weight { get; }
         }
     }
 }
