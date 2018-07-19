@@ -8,9 +8,9 @@ namespace Vivelin.Luck.Tests
     public class EnumerableExtensionsTests
     {
         [TestMethod]
-        public void SampleSelectsHigherWeightedObjectsMoreFrequently()
+        public void WeightedSampleSelectsHigherWeightedObjectsMoreFrequently()
         {
-            var iterations = 5000;
+            var iterations = 1_000_000;
             var collection = new[]
             {
                 new WeightedValue(0.01),
@@ -27,7 +27,7 @@ namespace Vivelin.Luck.Tests
             var random = new Random();
             for (var i = 0; i < iterations; i++)
             {
-                var value = collection.Sample(random);
+                var value = collection.WeightedSample(random);
                 results[value.Weight]++;
             }
 
@@ -37,7 +37,70 @@ namespace Vivelin.Luck.Tests
         }
 
         [TestMethod]
-        public void SampleSkipsOverNullReferences()
+        public void SampleReturnsDefaultValueOnEmptyCollections()
+        {
+            var collection = new WeightedObject[0];
+            Assert.IsNull(collection.Sample());
+        }
+
+        [TestMethod]
+        public void SampleReturnsDifferentElementsWhenCalledRepeatedly()
+        {
+            var collection = new[]
+            {
+                new WeightedValue(0.01),
+                new WeightedValue(0.1),
+                new WeightedValue(10),
+                new WeightedValue(100)
+            };
+
+            var initial = collection.Sample();
+            for (var i = 0; i < 1000; i++)
+            {
+                if (initial.Weight != collection.Sample().Weight)
+                    return;
+            }
+
+            Assert.Fail();
+        }
+
+        [TestMethod]
+        public void SampleReturnsDifferentElementsWhenCalledRepeatedlyInSequence()
+        {
+            var collection = new[]
+            {
+                new WeightedValue(0.01),
+                new WeightedValue(0.1),
+                new WeightedValue(10),
+                new WeightedValue(100)
+            };
+
+            var initial = ((IEnumerable<WeightedValue>)collection).Sample();
+            for (var i = 0; i < 1000; i++)
+            {
+                if (initial.Weight != ((IEnumerable<WeightedValue>)collection).Sample().Weight)
+                    return;
+            }
+
+            Assert.Fail();
+        }
+
+        [TestMethod]
+        public void SampleReturnsDefaultValueOnEmptySequences()
+        {
+            var collection = new WeightedObject[0];
+            Assert.IsNull(((IEnumerable<WeightedObject>)collection).Sample());
+        }
+
+        [TestMethod]
+        public void WeightedSampleReturnsDefaultValueOnEmptyCollections()
+        {
+            var collection = new WeightedObject[0];
+            Assert.IsNull(collection.WeightedSample());
+        }
+
+        [TestMethod]
+        public void WeightedSampleSkipsOverNullReferences()
         {
             const int expectedWeight = 100;
             var collection = new[]
@@ -48,7 +111,7 @@ namespace Vivelin.Luck.Tests
             };
 
             var random = new Random(0);
-            var value = collection.Sample(random);
+            var value = collection.WeightedSample(random);
             Assert.AreEqual(expectedWeight, value.Weight);
         }
 
