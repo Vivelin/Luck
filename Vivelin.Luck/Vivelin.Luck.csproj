@@ -11,8 +11,8 @@
     <PackageTags>random rng</PackageTags>
     <NeutralLanguage></NeutralLanguage>
     <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
-    <Version>1.0.2</Version>
-    <PackageReleaseNotes>Fixed a NullReferenceIssue in Sample()</PackageReleaseNotes>
+    <Version>2.0.0</Version>
+    <PackageReleaseNotes>BREAKING: Renamed Sample to WeightedSample and added Sample for all element types</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
