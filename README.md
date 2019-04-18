@@ -9,7 +9,7 @@ Notable functionality provided by this package:
 
 - `Random` extensions that generate a random floating-point number within a range:
 
-  ```
+  ```c#
   > using Vivelin.Luck;
   > new Random().Next(-100.0d, +100.0d)
   -86.09016276248272
@@ -17,14 +17,14 @@ Notable functionality provided by this package:
 
 - A static, thread-safe way to generate numbers, based on the article [Revisiting randomness] by Jon Skeet:
 
-  ```
+  ```c#
   > using Vivelin.Luck;
   > Rng.Next()
   1284714155
   ```
 - An extension method on `IEnumerable<T>` that randomly selects an element, taking weights into account. Currently, this is only implemented for collections of types that implement `IWeighted`, but this could be made optional in future versions.
 
-  ```
+  ```c#
   var collection = new[]
   {
       new WeightedValue(0.01),
